@@ -34,3 +34,7 @@
 - Extract files matching a pattern:
 
 `tar xf {{source.tar}} --wildcards {{"*.html"}}`
+
+- Archived with timestamp for backup
+
+`tar -zcvf "{{backupfilename}}-$(date '+%Y-%m-%d').tar.gz"  {{sourcedir}}`
