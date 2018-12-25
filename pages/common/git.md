@@ -17,3 +17,7 @@
 - Execute Git command:
 
 `git {{command}}`
+
+- Skip the comimt is not merge commit when bisect
+
+`git rev-list --all --max-parents=1 |xargs git bisect skip`
