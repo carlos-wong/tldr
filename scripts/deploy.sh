@@ -20,14 +20,9 @@ function build_archive {
 }
 
 function upload_assets {
-  git clone --quiet --depth 1 git@github.com:${SITE_REPO_SLUG}.git $SITE_HOME
-  mv -f $TLDR_ARCHIVE $SITE_HOME/assets/
-  cp -f $TLDRHOME/index.json $SITE_HOME/assets/
-
-  cd $SITE_HOME
   git add -A
-  git commit -m "[TravisCI] uploaded assets after commits ${TRAVIS_COMMIT_RANGE}"
-  git push -q
+  git commit -m "Deploy new tldr.zip"
+  git push
 
   echo "Assets (pages archive, index) deployed to static site."
 }
