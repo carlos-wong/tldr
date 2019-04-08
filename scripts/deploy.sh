@@ -27,6 +27,11 @@ function upload_assets {
   echo "Assets (pages archive, index) deployed to static site."
 }
 
+function update_tldr_cache{
+  echo "Updating tldr cache"
+  tldr -u
+}
+
 ###################################
 # MAIN
 ###################################
@@ -35,3 +40,4 @@ initialize
 rebuild_index
 build_archive
 upload_assets
+update_tldr_cache
