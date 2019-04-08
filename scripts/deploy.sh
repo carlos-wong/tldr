@@ -34,3 +34,4 @@ function upload_assets {
 initialize
 rebuild_index
 build_archive
+upload_assets
