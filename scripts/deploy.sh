@@ -4,25 +4,8 @@
 set -ex
 
 function initialize {
-  if [ -z "$TLDRHOME" ]; then
-    export TLDRHOME=${TRAVIS_BUILD_DIR:-`pwd`}
-  fi
   export TLDR_ARCHIVE="tldr.zip"
-  export SITE_HOME="$HOME/site"
-  export SITE_URL="github.com/tldr-pages/tldr-pages.github.io"
-  export SITE_REPO_SLUG="tldr-pages/tldr-pages.github.io"
 
-  # Configure git.
-  git config --global user.email "travis@travis-ci.org"
-  git config --global user.name "Travis CI"
-  git config --global push.default simple
-  git config --global diff.zip.textconv "unzip -c -a"
-
-  # Decrypt and add deploy key.
-  eval "$(ssh-agent -s)"
-  openssl aes-256-cbc -K $encrypted_973441be79af_key -iv $encrypted_973441be79af_iv -in ./scripts/id_ed25519_tldr_asset_upload.enc -out id_ed25519 -d
-  chmod 600 id_ed25519
-  ssh-add id_ed25519
 }
 
 function rebuild_index {
@@ -32,7 +15,6 @@ function rebuild_index {
 
 function build_archive {
   rm -f $TLDR_ARCHIVE
-  cd $TLDRHOME/
   zip -r $TLDR_ARCHIVE pages*/ LICENSE.md index.json
   echo "Pages archive created."
 }
@@ -57,4 +39,3 @@ function upload_assets {
 initialize
 rebuild_index
 build_archive
-upload_assets
