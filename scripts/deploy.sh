@@ -27,8 +27,7 @@ function upload_assets {
   echo "Assets (pages archive, index) deployed to static site."
 }
 
-function update_tldr_cache{
-  echo "Updating tldr cache"
+function update_tldr_cache {
   tldr -u
 }
 
