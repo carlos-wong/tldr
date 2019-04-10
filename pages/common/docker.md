@@ -33,3 +33,15 @@
 - Fetch and follow the logs of a container:
 
 `docker logs -f {{container_name}}`
+
+- Commit container as image
+
+`docker commit -m "add pymongo" -a "carlos" hash imagename:ver`
+
+- Push image to server
+
+`docker push imagename`
+
+- Login
+
+`docker login domain -u username`
