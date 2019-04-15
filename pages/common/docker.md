@@ -45,3 +45,9 @@
 - Login
 
 `docker login domain -u username`
+
+- Remove stop containers
+
+`docker ps -q -f status=exited | xargs -I {} -p docker rm {}`
+
+
